@@ -15,6 +15,7 @@ set(SUBDIRS
     metric
     nar
     nd
+    od/abcod
     od/fastod
     od/order
     od/set_based_verifier

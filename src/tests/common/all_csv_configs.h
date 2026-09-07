@@ -4,6 +4,10 @@
 
 namespace tests {
 extern CSVConfig const kAbalone;
+extern CSVConfig const kAbcodFig6;
+extern CSVConfig const kAbcodReprise;
+extern CSVConfig const kAbcodRepriseS1;
+extern CSVConfig const kAbcodRepriseS1S3;
 extern CSVConfig const kACShippingDates;
 extern CSVConfig const kAdult;
 extern CSVConfig const kAdult9attr;

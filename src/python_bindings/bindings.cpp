@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <initializer_list>
 
+#include "python_bindings/abcod/bind_abcod_verification.h"
 #include "python_bindings/ac/bind_ac.h"
 #include "python_bindings/afd_metric/bind_afd_metric_calculation.h"
 #include "python_bindings/ar/bind_ar.h"
@@ -93,7 +94,8 @@ PYBIND11_MODULE(desbordante, module, pybind11::mod_gil_not_used()) {
                            BindAODVerification,
                            BindAfdMetricCalculation,
                            BindPAC,
-                           BindPACVerification}) {
+                           BindPACVerification,
+                           BindAbcodVerification}) {
         bind_func(module);
     }
 }

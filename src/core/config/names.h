@@ -164,4 +164,6 @@ constexpr auto kCindCondValues = "cind_condition_values";
 constexpr auto kSdG1 = "g1";
 constexpr auto kSdG2 = "g2";
 constexpr auto kSdIndices = "indices";
+
+constexpr auto kBandDirection = "direction";
 }  // namespace config::names

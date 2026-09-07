@@ -268,6 +268,15 @@ desbordante_add_bind(
 )
 
 desbordante_add_bind(
+    abcod
+    SRCS
+    abcod/bind_abcod_verification.cpp
+    LIBS
+    ${DESBORDANTE_PREFIX}::od::abcod
+    Boost::headers
+)
+
+desbordante_add_bind(
     od
     SRCS
     od/bind_od.cpp

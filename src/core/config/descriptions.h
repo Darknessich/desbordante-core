@@ -241,4 +241,8 @@ constexpr auto kDCindCondValues =
 constexpr auto kDSdG1 = "Lower bound of the sequential interval (inclusive).";
 constexpr auto kDSdG2 = "Upper bound of the sequential interval (inclusive). Set -1 for Infinity.";
 constexpr auto kDSdIndices = "Subset of row indices to validate the SD on.";
+
+constexpr auto kDBandWidth =
+        "Band width: how much the right-hand side may go against the order (delta >= 0)";
+extern std::string_view const kDBandDirection;
 }  // namespace config::descriptions

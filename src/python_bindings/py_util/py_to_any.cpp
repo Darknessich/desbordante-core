@@ -26,6 +26,7 @@
 #include "core/algorithms/md/md_verifier/column_similarity_classifier.h"
 #include "core/algorithms/metric/enums.h"
 #include "core/algorithms/nar/des/enums.h"
+#include "core/algorithms/od/abcod/direction.h"
 #include "core/algorithms/od/fastod/od_ordering.h"
 #include "core/algorithms/pac/model/idomain.h"
 #include "core/config/custom_metric/custom_metric/type.h"
@@ -247,6 +248,7 @@ std::unordered_map<std::type_index, ConvFunc> const kConverters{
         kEnumConvPair<algos::cfd::Substrategy>,
         kEnumConvPair<algos::hymd::LevelDefinition>,
         kEnumConvPair<algos::od::Ordering>,
+        kEnumConvPair<algos::abcod::Direction>,
         kEnumConvPair<algos::cind::CondType>,
         kEnumConvPair<algos::cind::AlgoType>,
         kEnumConvPair<algos::des::DifferentialStrategy>,

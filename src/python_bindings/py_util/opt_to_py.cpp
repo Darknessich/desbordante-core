@@ -16,6 +16,7 @@
 #include "core/algorithms/md/hymd/enums.h"
 #include "core/algorithms/metric/enums.h"
 #include "core/algorithms/nar/des/enums.h"
+#include "core/algorithms/od/abcod/direction.h"
 #include "core/algorithms/od/fastod/od_ordering.h"
 #include "core/algorithms/pac/model/idomain.h"
 #include "core/config/custom_metric/custom_metric/type.h"
@@ -71,6 +72,7 @@ std::unordered_map<std::type_index, ConvFunction> const kConverters{
         kEnumConvPair<algos::hymd::LevelDefinition>,
         kEnumConvPair<algos::des::DifferentialStrategy>,
         kEnumConvPair<algos::od::Ordering>,
+        kEnumConvPair<algos::abcod::Direction>,
         kEnumConvPair<algos::AfdErrorMeasure>};
 }  // namespace
 

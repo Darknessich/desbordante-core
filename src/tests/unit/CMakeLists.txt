@@ -630,6 +630,17 @@ desbordante_add_test(
     ${DESBORDANTE_PREFIX}::model::types
 )
 desbordante_add_test(
+    od.abcod
+    SRCS
+    test_abcod_verifier.cpp
+    LIBS
+    ${DESBORDANTE_PREFIX}::od::abcod
+    ${DESBORDANTE_PREFIX}::testlib::common
+    spdlog::spdlog_header_only
+    Boost::headers
+    ${DESBORDANTE_PREFIX}::model::types
+)
+desbordante_add_test(
     od.set_based_aod_verifier
     SRCS
     test_set_based_verifier.cpp

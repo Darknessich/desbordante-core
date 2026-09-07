@@ -9,6 +9,7 @@
 #include "core/algorithms/md/hymd/enums.h"
 #include "core/algorithms/metric/enums.h"
 #include "core/algorithms/nar/des/enums.h"
+#include "core/algorithms/od/abcod/direction.h"
 #include "core/algorithms/od/fastod/od_ordering.h"
 #include "core/config/enum_members_string.h"
 
@@ -77,4 +78,6 @@ std::string_view const kDODLeftOrdering =
 std::string_view const kDConditionType =
         c<S("CIND condition types to use\n"), m<algos::cind::CondType>>;
 std::string_view const kDAlgoType = c<S("CIND algorithm types to use\n"), m<algos::cind::AlgoType>>;
+std::string_view const kDBandDirection =
+        c<S("Direction of the right-hand side of the band OD\n"), m<algos::abcod::Direction>>;
 }  // namespace config::descriptions
