@@ -54,7 +54,9 @@ void BindAbcodVerification(py::module_& main_module) {
                  [](AbcodVerifier const& verifier) {
                      return DirectionName(verifier.GetLmbDirection());
                  })
-            .def("get_segments", &AbcodVerifier::GetSegments);
+            .def("get_segments", &AbcodVerifier::GetSegments)
+            .def("get_series", &AbcodVerifier::GetSeries)
+            .def("get_gain", &AbcodVerifier::GetGain);
 
     main_module.attr("abcod_verification") = abcod_verification_module;
 }

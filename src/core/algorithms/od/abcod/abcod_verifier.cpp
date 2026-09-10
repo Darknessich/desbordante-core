@@ -5,6 +5,7 @@
 
 #include "core/algorithms/od/abcod/lmb.h"
 #include "core/algorithms/od/abcod/segmentation.h"
+#include "core/algorithms/od/abcod/series_discovery.h"
 #include "core/config/exceptions.h"
 #include "core/config/indices/option.h"
 #include "core/config/names_and_descriptions.h"
@@ -44,12 +45,14 @@ void AbcodVerifier::RegisterOptions() {
     RegisterOption(Option<double>{&delta_, kDelta, kDBandWidth, 0.0}.SetValueCheck(check_delta));
     RegisterOption(
             Option<Direction>{&direction_, kBandDirection, kDBandDirection, Direction::kAscending});
+    RegisterOption(Option<size_t>{&epsilon_, kMaxOutlierRun, kDMaxOutlierRun, 0});
+    RegisterOption(Option<bool>{&use_pieces_, kUsePieces, kDUsePieces, false});
 }
 
 void AbcodVerifier::MakeExecuteOptsAvailable() {
     using namespace config::names;
     MakeOptionsAvailable({config::kLhsIndicesOpt.GetName(), config::kRhsIndicesOpt.GetName(),
-                          kDelta, kBandDirection});
+                          kDelta, kBandDirection, kMaxOutlierRun, kUsePieces});
 }
 
 void AbcodVerifier::LoadDataInternal() {
@@ -67,6 +70,8 @@ void AbcodVerifier::ResetState() {
     outliers_.clear();
     error_ = 0;
     segments_.clear();
+    series_.clear();
+    gain_ = 0;
 }
 
 void AbcodVerifier::VerifyAbod() {
@@ -94,7 +99,12 @@ void AbcodVerifier::ExecuteInternal() {
     sequence_ = BuildOrderedSequence(rows_, lhs_indices_, rhs_indices_.front());
     VerifyAbod();
     segments_ = ComputeBcod(sequence_, delta_, direction_);
-    LOG_DEBUG("abOD error {}, LMB size {}, bcOD segments {}", error_, lmb_size_, segments_.size());
+    SeriesDiscoveryResult discovery =
+            DiscoverSeries(sequence_, delta_, epsilon_, direction_, use_pieces_);
+    series_ = std::move(discovery.series);
+    gain_ = discovery.gain;
+    LOG_DEBUG("abOD error {}, LMB size {}, bcOD segments {}, abcOD series {}, gain {}", error_,
+              lmb_size_, segments_.size(), series_.size(), gain_);
 }
 
 }

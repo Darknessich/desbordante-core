@@ -2,6 +2,7 @@ set(NAME od.abcod)
 desbordante_add_lib(NAME)
 target_sources(
     ${NAME} PRIVATE abcod_verifier.cpp lmb.cpp ordered_sequence.cpp segmentation.cpp
+            series_discovery.cpp
 )
 target_link_libraries(
     ${NAME}

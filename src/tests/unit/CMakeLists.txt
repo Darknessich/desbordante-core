@@ -632,6 +632,7 @@ desbordante_add_test(
 desbordante_add_test(
     od.abcod
     SRCS
+    test_abcod_series.cpp
     test_abcod_verifier.cpp
     LIBS
     ${DESBORDANTE_PREFIX}::od::abcod

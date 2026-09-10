@@ -166,4 +166,6 @@ constexpr auto kSdG2 = "g2";
 constexpr auto kSdIndices = "indices";
 
 constexpr auto kBandDirection = "direction";
+constexpr auto kMaxOutlierRun = "epsilon";
+constexpr auto kUsePieces = "use_pieces";
 }  // namespace config::names

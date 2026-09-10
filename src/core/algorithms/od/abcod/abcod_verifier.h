@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -12,9 +13,6 @@
 #include "core/config/tabular_data/input_table_type.h"
 
 namespace algos::abcod {
-
-
-
 
 class AbcodVerifier : public Algorithm {
 public:
@@ -28,6 +26,8 @@ private:
     config::IndicesType rhs_indices_;
     double delta_ = 0;
     Direction direction_ = Direction::kAscending;
+    size_t epsilon_ = 0;
+    bool use_pieces_ = false;
 
     OrderedSequence sequence_;
 
@@ -37,6 +37,9 @@ private:
     Error error_ = 0;
 
     std::vector<Series> segments_;
+    
+    std::vector<Series> series_;
+    int64_t gain_ = 0;
 
     void RegisterOptions();
     void VerifyAbod();
@@ -89,6 +92,16 @@ public:
 
     [[nodiscard]] std::vector<Series> const& GetSegments() const noexcept {
         return segments_;
+    }
+
+    
+    [[nodiscard]] std::vector<Series> const& GetSeries() const noexcept {
+        return series_;
+    }
+
+    
+    [[nodiscard]] int64_t GetGain() const noexcept {
+        return gain_;
     }
 };
 

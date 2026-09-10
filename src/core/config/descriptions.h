@@ -245,4 +245,8 @@ constexpr auto kDSdIndices = "Subset of row indices to validate the SD on.";
 constexpr auto kDBandWidth =
         "Band width: how much the right-hand side may go against the order (delta >= 0)";
 extern std::string_view const kDBandDirection;
+constexpr auto kDMaxOutlierRun =
+        "Largest allowed number of consecutive outliers in a series (cost bound epsilon)";
+constexpr auto kDUsePieces =
+        "Build series from pieces (Algorithm 5): faster, but may miss the optimal segmentation";
 }  // namespace config::descriptions
