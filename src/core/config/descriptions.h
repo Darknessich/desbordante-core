@@ -249,4 +249,7 @@ constexpr auto kDMaxOutlierRun =
         "Largest allowed number of consecutive outliers in a series (cost bound epsilon)";
 constexpr auto kDUsePieces =
         "Build series from pieces (Algorithm 5): faster, but may miss the optimal segmentation";
+constexpr auto kDMinCoverage =
+        "Least share of non-missing values that must lie in the bands of long enough series";
+constexpr auto kDMinSeriesSize = "Series with fewer non-missing values do not count as covered";
 }  // namespace config::descriptions

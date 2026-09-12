@@ -168,4 +168,6 @@ constexpr auto kSdIndices = "indices";
 constexpr auto kBandDirection = "direction";
 constexpr auto kMaxOutlierRun = "epsilon";
 constexpr auto kUsePieces = "use_pieces";
+constexpr auto kMinCoverage = "min_coverage";
+constexpr auto kMinSeriesSize = "min_series_size";
 }  // namespace config::names

@@ -15,6 +15,7 @@ CSVConfig CreateCsvConfig(std::string_view filename, char separator, bool has_he
 
 CSVConfig const kAbalone = CreateCsvConfig("abalone.csv", ',', false);
 CSVConfig const kAbcodFig6 = CreateCsvConfig("abcod_fig6.csv", ',', true);
+CSVConfig const kAbcodMiner = CreateCsvConfig("abcod_miner.csv", ',', true);
 CSVConfig const kAbcodReprise = CreateCsvConfig("abcod_reprise.csv", ',', true);
 CSVConfig const kAbcodRepriseS1 = CreateCsvConfig("abcod_reprise_s1.csv", ',', true);
 CSVConfig const kAbcodRepriseS1S3 = CreateCsvConfig("abcod_reprise_s1_s3.csv", ',', true);

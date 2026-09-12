@@ -270,6 +270,7 @@ desbordante_add_bind(
 desbordante_add_bind(
     abcod
     SRCS
+    abcod/bind_abcod.cpp
     abcod/bind_abcod_verification.cpp
     LIBS
     ${DESBORDANTE_PREFIX}::od::abcod
