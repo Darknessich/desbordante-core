@@ -1306,6 +1306,16 @@ Num distinct rhs values: 2
 
 '''
 
+snapshots['test_example[basic/mining_abcod.py-None-mining_abcod_output] mining_abcod_output'] = '''The abcOD miner checks every column X against every numeric column Y:
+rows are sorted by X and split into series (see verifying_abcod.py).
+X -> Y is reported if the bands of series with at least min_series_size
+rows cover at least min_coverage of the known values of Y.
+
+catalog_number -> year: 2 series, coverage 0.95
+  5 rows, year descending, 0 outliers
+  17 rows, year ascending, 1 outliers
+'''
+
 snapshots['test_example[basic/mining_ac.py-None-mining_ac_output] mining_ac_output'] = '''This example is dedicated to Fuzzy Algebraic Constraints (AC). The definition and algorithm 
 are based on article "B-HUNT: Automatic Discovery of Fuzzy Algebraic Constraints in Relational 
 Data" by Paul G. Brown & Peter J. Haas presented at VLDB in 2003.
@@ -4019,6 +4029,39 @@ Found UCCs:
 There are no unary UCCs, so there is no single column that can define a key.
 We need to select a combination of two columns, that will serve as an ID.
 \x1b[1m\x1b[36m[First_name Last_name]\x1b[0m is a good candidate.
+'''
+
+snapshots['test_example[basic/verifying_abcod.py-None-verifying_abcod_output] verifying_abcod_output'] = '''Record labels assign catalog numbers in order, so the release year
+mostly grows with the catalog number. A band order dependency (band OD)
+"catalog_number ->_delta year" allows the year to go back by at most delta:
+a number may be assigned before the release is out.
+
+Real data break even a band OD in two ways:
+- errors: a few years are wrong (approximation, abOD);
+- several numberings: the dependency holds on series of rows
+  (conditioning, bcOD).
+abcOD combines both: rows sorted by X are split into series; every series
+has a longest monotonic band (LMB), the other rows are outliers. The
+series maximize the gain while no series has more than epsilon outliers
+in a row. See Li et al., "ABC of Order Dependencies" (2020).
+
+1) abOD: one band over the whole table, delta = 1, year ascending
+  error: 0.286 (6 of 21 known years are outliers)
+  holds with error 0.1: False
+
+2) bcOD: the least number of segments where the band OD holds exactly
+  9 16889-4 .. 9 22306-1: 6 releases, year descending, 6 of 6 in the band
+  9 25619-1 .. CDW45934: 9 releases, year ascending, 8 of 8 in the band
+  CDW46012 .. CDW48016: 7 releases, year ascending, 7 of 7 in the band
+
+3) abcOD: series with at most epsilon = 1 outlier in a row, each series may go up or down
+  9 16889-4 .. 9 18069-2: 5 releases, year descending, 5 of 5 in the band
+  9 22306-1 .. CDW48016: 17 releases, year ascending, 15 of 16 in the band
+    outlier: CDW45934 "Mirror Ball", year 2012
+  gain: 249
+
+The only outlier is "Mirror Ball": its year 2012 is far from its neighbours (the true year is 1995).
+The missing year of "Ancient Heart" is not an outlier.
 '''
 
 snapshots['test_example[basic/verifying_aod.py-None-verifying_aod_output] verifying_aod_output'] = '''This example verifies set-based Order Dependencies (ODs).
